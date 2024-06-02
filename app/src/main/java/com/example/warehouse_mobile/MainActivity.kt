@@ -3,6 +3,7 @@ package com.example.warehouse_mobile
 import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.RequiresApi
@@ -18,6 +19,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.warehouse_mobile.composable.HomeCoposable
 import com.example.warehouse_mobile.composable.LandingCoposable
 import com.example.warehouse_mobile.composable.LogInCoposable
 import com.example.warehouse_mobile.composable.RegisterCoposable
@@ -49,6 +51,9 @@ class MainActivity : ComponentActivity() {
                         }
                         composable("login") {
                             LogInCoposable(userViewModel, navController)
+                        }
+                        composable("home") {
+                            HomeCoposable(userViewModel)
                         }
                     }
                 }

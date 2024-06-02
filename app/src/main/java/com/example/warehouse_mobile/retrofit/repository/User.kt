@@ -1,14 +1,8 @@
-package com.terra.mobile.retrofit.repository
+package com.example.warehouse_mobile.retrofit.repository
 
 import com.example.warehouse_mobile.model.AuthenticationRequest
 import com.example.warehouse_mobile.model.AuthenticationResponse
-import com.example.warehouse_mobile.model.BanResponse
-import com.example.warehouse_mobile.model.LoginDataDTO
-import com.example.warehouse_mobile.model.LoginDataRequest
-import com.example.warehouse_mobile.model.LoginDataResponse
 import com.example.warehouse_mobile.model.RegistrationRequest
-import com.example.warehouse_mobile.model.UserChangeStatusRequest
-import com.example.warehouse_mobile.model.UserLogDataRequest
 import com.example.warehouse_mobile.model.UserRequest
 import com.example.warehouse_mobile.model.userModel
 import com.example.warehouse_mobile.retrofit.Api

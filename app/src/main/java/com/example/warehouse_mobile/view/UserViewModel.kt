@@ -16,7 +16,7 @@ import com.example.warehouse_mobile.model.AuthenticationRequest
 import com.example.warehouse_mobile.model.RegistrationRequest
 import com.example.warehouse_mobile.model.UserRequest
 import com.example.warehouse_mobile.model.userModel
-import com.terra.mobile.retrofit.repository.UserRepository
+import com.example.warehouse_mobile.retrofit.repository.UserRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -53,8 +53,10 @@ class UserViewModel(private val userRepository: UserRepository) : ViewModel() {
 
     fun logUser(email: String, password: String, navController: NavHostController) {
         viewModelScope.launch {
+            Log.w("logUser", email+" "+password)
             userUiState = UserState.Loading
             userUiState = try {
+                Log.w("try", email+" "+password)
                 UserState.Success(
                     userRepository.authenticate(
                         AuthenticationRequest(
@@ -72,6 +74,7 @@ class UserViewModel(private val userRepository: UserRepository) : ViewModel() {
                 navController.navigate(navstring)
                 Log.w("USERTOKKEN", userUiState.toString())
             }
+            Log.w("END", email+" "+password)
         }
     }
 

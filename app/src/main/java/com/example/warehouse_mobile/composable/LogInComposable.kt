@@ -1,6 +1,7 @@
 package com.example.warehouse_mobile.composable
 
 import android.annotation.SuppressLint
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -161,6 +162,7 @@ private fun logInAction(
     navController: NavHostController,
     updateProgress: (Float) -> Unit
 ) {
+    Log.w("logInAction", "logInAction")
     updateProgress(40F)
     viewModel.logUser(email, password, navController)
 }

@@ -1,21 +1,13 @@
-
 package com.example.warehouse_mobile.data
 
 import retrofit2.Retrofit
 import com.example.warehouse_mobile.retrofit.Api
-
-
-
-import com.terra.mobile.retrofit.repository.NetworkUserRepository
-
-import com.terra.mobile.retrofit.repository.UserRepository
+import com.example.warehouse_mobile.retrofit.repository.NetworkUserRepository
+import com.example.warehouse_mobile.retrofit.repository.UserRepository
 import retrofit2.converter.gson.GsonConverterFactory
 
-
 interface AppContainer {
-
     val userRepository: UserRepository
-
 }
 
 class DefaultAppContainer : AppContainer {
@@ -31,11 +23,9 @@ class DefaultAppContainer : AppContainer {
         retrofit.create(Api::class.java)
     }
 
-
     override val userRepository: UserRepository by lazy {
         NetworkUserRepository(retrofitService)
     }
-
 }
 
 
