@@ -19,8 +19,6 @@ import retrofit2.http.POST
 
 
 interface Api {
-
-
     //Auth Apis
     @POST("api/vi/auth/authenticate")
     suspend fun getAuthList(@Body authRequest: AuthenticationRequest): AuthenticationResponse
@@ -28,12 +26,9 @@ interface Api {
     @POST("api/vi/auth/register")
     suspend fun registerNewUserApi(@Body regRequest: RegistrationRequest): AuthenticationResponse
 
-
     //User Apis
     @GET("api/vi/user")
     suspend fun getUserData(@Header("Authorization") token: String,@Body userRequest: UserRequest): userModel
-
-
 
 }
 
