@@ -44,11 +44,11 @@ class UserViewModel(
     private val _superAdminBanedUserData = MutableStateFlow<List<userModel>>(emptyList())
     val superAdminBanedUserData: StateFlow<List<userModel>> = _superAdminBanedUserData
 
-    fun getUserData(userRequest: UserRequest) {
+    fun getUserData() {
         viewModelScope.launch {
             if (userUiState is UserState.Success) {
                 val authToken = "Bearer " + (userUiState as UserState.Success).getTokken()
-                val foudUserData = userRepository.getUserData(authToken, userRequest)
+                val foudUserData = userRepository.getUserData(authToken)
                 if (foudUserData != null) {
                     _userData.value = foudUserData
                 } else {

@@ -21,6 +21,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.warehouse_mobile.composable.HomeCoposable
 import com.example.warehouse_mobile.composable.LandingCoposable
 import com.example.warehouse_mobile.composable.LogInCoposable
+import com.example.warehouse_mobile.composable.ProfileCoposable
 import com.example.warehouse_mobile.composable.RegisterCoposable
 import com.example.warehouse_mobile.composable.StockCoposable
 import com.example.warehouse_mobile.ui.theme.WarehouseMobileTheme
@@ -53,10 +54,13 @@ class MainActivity : ComponentActivity() {
                             LogInCoposable(userViewModel, navController)
                         }
                         composable("home") {
-                            HomeCoposable(userViewModel,navController)
+                            HomeCoposable(userViewModel, navController)
                         }
-                        composable("stock"){
+                        composable("stock") {
                             StockCoposable(userViewModel)
+                        }
+                        composable("profile") {
+                            ProfileCoposable(userViewModel)
                         }
                     }
                 }

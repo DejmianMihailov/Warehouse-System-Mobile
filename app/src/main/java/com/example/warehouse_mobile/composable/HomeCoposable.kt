@@ -3,8 +3,10 @@ package com.example.warehouse_mobile.composable
 import android.annotation.SuppressLint
 import android.os.Build
 import androidx.annotation.RequiresApi
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.AccountCircle
 import androidx.compose.material.icons.rounded.AllInbox
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
@@ -29,14 +31,17 @@ fun HomeCoposable(
         Surface(
             modifier = Modifier.fillMaxSize(),
         ) {
-            Text(text = "Ko staaa A")
             if (userModel.userUiState is UserState.Success) {
-                //userModel.getUserData()
-
+                userModel.getUserData()
             }
-            Button(onClick = { navController.navigate("stock") }) {
-                Text(text = "Stock")
-                Icon(Icons.Rounded.AllInbox, contentDescription ="Stock icon")
+            Column {
+                Button(onClick = { navController.navigate("stock") }) {
+                    Text(text = "Stock")
+                    Icon(Icons.Rounded.AllInbox, contentDescription ="Stock icon")
+                }
+                Button(onClick = { navController.navigate("profile") }) {
+                    Icon(Icons.Rounded.AccountCircle, contentDescription ="Profile icon")
+                }
             }
         }
 

@@ -23,6 +23,8 @@ interface Api {
     //User Apis
     @GET("api/vi/user")
     suspend fun getUserData(@Header("Authorization") token: String,@Body userRequest: UserRequest): userModel
+    @GET("api/vi/user/data")
+    suspend fun getUserDataByToken(@Header("Authorization") token: String): userModel
     //Stock Apis
     @GET("api/vi/stock")
     suspend fun getAllStock(@Header("Authorization") token: String): StockResponse

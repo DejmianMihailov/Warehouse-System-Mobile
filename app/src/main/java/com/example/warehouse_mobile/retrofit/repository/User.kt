@@ -10,7 +10,7 @@ import com.example.warehouse_mobile.retrofit.Api
 interface UserRepository {
     suspend fun authenticate(authRequest: AuthenticationRequest): AuthenticationResponse
     suspend fun register(registrationRequest: RegistrationRequest): AuthenticationResponse
-    suspend fun getUserData(token: String,userRequest: UserRequest): userModel
+    suspend fun getUserData(token: String): userModel
 }
 
 class NetworkUserRepository(
@@ -22,5 +22,5 @@ class NetworkUserRepository(
     override suspend fun register(registrationRequest: RegistrationRequest): AuthenticationResponse =
         api.registerNewUserApi(registrationRequest)
 
-    override suspend fun getUserData(token: String,userRequest: UserRequest): userModel = api.getUserData(token,userRequest)
+    override suspend fun getUserData(token: String): userModel = api.getUserDataByToken(token)
 }
