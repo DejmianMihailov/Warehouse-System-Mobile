@@ -3,7 +3,6 @@ package com.example.warehouse_mobile
 import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.RequiresApi
@@ -23,6 +22,7 @@ import com.example.warehouse_mobile.composable.HomeCoposable
 import com.example.warehouse_mobile.composable.LandingCoposable
 import com.example.warehouse_mobile.composable.LogInCoposable
 import com.example.warehouse_mobile.composable.RegisterCoposable
+import com.example.warehouse_mobile.composable.StockCoposable
 import com.example.warehouse_mobile.ui.theme.WarehouseMobileTheme
 import com.example.warehouse_mobile.view.UserViewModel
 
@@ -53,7 +53,10 @@ class MainActivity : ComponentActivity() {
                             LogInCoposable(userViewModel, navController)
                         }
                         composable("home") {
-                            HomeCoposable(userViewModel)
+                            HomeCoposable(userViewModel,navController)
+                        }
+                        composable("stock"){
+                            StockCoposable(userViewModel)
                         }
                     }
                 }

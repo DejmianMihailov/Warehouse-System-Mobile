@@ -1,13 +1,17 @@
 package com.example.warehouse_mobile.data
 
+import com.example.warehouse_mobile.model.StockResponse
 import retrofit2.Retrofit
 import com.example.warehouse_mobile.retrofit.Api
+import com.example.warehouse_mobile.retrofit.repository.NetworkStockRepository
 import com.example.warehouse_mobile.retrofit.repository.NetworkUserRepository
+import com.example.warehouse_mobile.retrofit.repository.StockRepository
 import com.example.warehouse_mobile.retrofit.repository.UserRepository
 import retrofit2.converter.gson.GsonConverterFactory
 
 interface AppContainer {
     val userRepository: UserRepository
+    val stockResponse:StockRepository
 }
 
 class DefaultAppContainer : AppContainer {
@@ -26,6 +30,10 @@ class DefaultAppContainer : AppContainer {
     override val userRepository: UserRepository by lazy {
         NetworkUserRepository(retrofitService)
     }
+    override val stockResponse: StockRepository by lazy {
+        NetworkStockRepository(retrofitService)
+    }
+
 }
 
 

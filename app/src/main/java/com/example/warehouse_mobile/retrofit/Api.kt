@@ -3,6 +3,7 @@ package com.example.warehouse_mobile.retrofit
 import com.example.warehouse_mobile.model.AuthenticationRequest
 import com.example.warehouse_mobile.model.AuthenticationResponse
 import com.example.warehouse_mobile.model.RegistrationRequest
+import com.example.warehouse_mobile.model.StockResponse
 import com.example.warehouse_mobile.model.UserRequest
 import com.example.warehouse_mobile.model.userModel
 import retrofit2.http.Body
@@ -22,6 +23,8 @@ interface Api {
     //User Apis
     @GET("api/vi/user")
     suspend fun getUserData(@Header("Authorization") token: String,@Body userRequest: UserRequest): userModel
-
+    //Stock Apis
+    @GET("api/vi/stock")
+    suspend fun getAllStock(@Header("Authorization") token: String): StockResponse
 }
 
