@@ -6,8 +6,13 @@ import androidx.compose.material.icons.rounded.AccountCircle
 import androidx.compose.material.icons.rounded.DeliveryDining
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.navigation.NavHostController
 import com.example.warehouse_mobile.view.UserViewModel
 
@@ -24,5 +29,7 @@ fun SearchComposable(userModel: UserViewModel, navController: NavHostController)
 fun SearchShipment(userViewModel: UserViewModel) {
     Column {
         Text(text = "Shipments")
+        SearchShipmentForm()
     }
 }
+
