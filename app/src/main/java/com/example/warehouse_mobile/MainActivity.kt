@@ -23,6 +23,8 @@ import com.example.warehouse_mobile.composable.LandingCoposable
 import com.example.warehouse_mobile.composable.LogInCoposable
 import com.example.warehouse_mobile.composable.ProfileCoposable
 import com.example.warehouse_mobile.composable.RegisterCoposable
+import com.example.warehouse_mobile.composable.SearchComposable
+import com.example.warehouse_mobile.composable.SearchShipment
 import com.example.warehouse_mobile.composable.StockCoposable
 import com.example.warehouse_mobile.ui.theme.WarehouseMobileTheme
 import com.example.warehouse_mobile.view.UserViewModel
@@ -61,6 +63,12 @@ class MainActivity : ComponentActivity() {
                         }
                         composable("profile") {
                             ProfileCoposable(userViewModel)
+                        }
+                        composable("search") {
+                            SearchComposable(userViewModel,navController)
+                        }
+                        composable("searchShipment") {
+                            SearchShipment(userViewModel)
                         }
                     }
                 }

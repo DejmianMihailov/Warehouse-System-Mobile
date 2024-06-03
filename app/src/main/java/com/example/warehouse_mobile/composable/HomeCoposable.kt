@@ -16,6 +16,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.AccountCircle
 import androidx.compose.material.icons.rounded.AllInbox
+import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedButton
@@ -63,6 +64,10 @@ fun HomeCoposable(
                 Button(onClick = { navController.navigate("profile") }) {
                     Icon(Icons.Rounded.AccountCircle, contentDescription = "Profile icon")
                 }
+                Button(onClick = { navController.navigate("search") }) {
+                    Text(text = "Reports")
+                    Icon(Icons.Rounded.Search, contentDescription = "Search icon")
+                }
 
                 OutlinedButton(onClick = { navController.navigate("stock") }) {
                     Column {
@@ -72,7 +77,9 @@ fun HomeCoposable(
                             painter = painterResource(id = R.drawable.stock1),
                             contentDescription = "Stock image button",
                             contentScale = ContentScale.Crop,
-                            modifier = Modifier.size(300.dp).clip(CircleShape)
+                            modifier = Modifier
+                                .size(300.dp)
+                                .clip(CircleShape)
                         )
                     }
                 }
