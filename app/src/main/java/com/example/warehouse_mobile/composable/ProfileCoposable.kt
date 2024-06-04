@@ -20,5 +20,6 @@ fun ProfileCoposable(userModel: UserViewModel) {
         Text(text = "First Name: ${user.value.firstName}")
         Text(text = "Last Name: ${user.value.lastName}")
         Text(text = "Email: ${user.value.email}")
+        Text(text = "Role: ${user.value.role}" )
     }
 }

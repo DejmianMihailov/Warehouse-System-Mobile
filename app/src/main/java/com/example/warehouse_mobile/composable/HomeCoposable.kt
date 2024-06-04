@@ -2,6 +2,7 @@ package com.example.warehouse_mobile.composable
 
 import android.annotation.SuppressLint
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -15,6 +16,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.AccountCircle
+import androidx.compose.material.icons.rounded.AddReaction
 import androidx.compose.material.icons.rounded.AllInbox
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material3.Button
@@ -69,6 +71,14 @@ fun HomeCoposable(
                     Icon(Icons.Rounded.Search, contentDescription = "Search icon")
                 }
 
+                if (isAdmin(userModel)) {
+                    Button(onClick = { navController.navigate("createOperator") }) {
+                        Text(text = "Create Operator")
+                        Icon(Icons.Rounded.AddReaction, contentDescription = "Search icon")
+                    }
+                }
+
+
                 OutlinedButton(onClick = { navController.navigate("stock") }) {
                     Column {
                         //Text(text = "Stock")
@@ -87,5 +97,20 @@ fun HomeCoposable(
         }
 
     }
+}
 
+private fun isAdmin(userViewModel: UserViewModel): Boolean {
+    if (userViewModel.userUiState is UserState.Success) {
+        Log.w("Success", "Success")
+
+        if (
+            (userViewModel.userUiState as UserState.Success).getRole() == "ADMIN"||
+            userViewModel.userData.value?.role == "ADMIN"
+        ) {
+            Log.w("Success", "ADMIN")
+
+            return true;
+        }
+    }
+    return false;
 }

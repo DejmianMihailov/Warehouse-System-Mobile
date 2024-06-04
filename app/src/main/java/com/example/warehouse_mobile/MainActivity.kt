@@ -18,6 +18,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.warehouse_mobile.composable.CrateNewUser
 import com.example.warehouse_mobile.composable.HomeCoposable
 import com.example.warehouse_mobile.composable.LandingCoposable
 import com.example.warehouse_mobile.composable.LogInCoposable
@@ -69,6 +70,9 @@ class MainActivity : ComponentActivity() {
                         }
                         composable("searchShipment") {
                             SearchShipment(userViewModel)
+                        }
+                        composable("createOperator") {
+                            CrateNewUser(userViewModel)
                         }
                     }
                 }

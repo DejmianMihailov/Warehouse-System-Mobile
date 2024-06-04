@@ -4,7 +4,7 @@
     <selectionStates>
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2024-06-03T17:57:27.574133600Z">
+        <DropdownSelection timestamp="2024-06-04T17:34:07.449820Z">
           <Target type="DEFAULT_BOOT">
             <handle>
               <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\ivail\.android\avd\Na_ivo_vtoriq_tel.avd" />

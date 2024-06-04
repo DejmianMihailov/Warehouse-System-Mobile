@@ -32,7 +32,7 @@ class UserViewModel(
     var userUiState: UserState by mutableStateOf(UserState.Loading)
     //var userData: UserModel by mutableStateOf(UserModel("", "", ""))
 
-    private val _userData = MutableStateFlow<userModel>(userModel("", "", ""))
+    private val _userData = MutableStateFlow<userModel>(userModel("", "", "", ""))
     val userData: StateFlow<userModel> = _userData
 
     private val _stockDate = MutableStateFlow<StockResponse>(StockResponse(emptyList()))
@@ -52,7 +52,7 @@ class UserViewModel(
                 if (foudUserData != null) {
                     _userData.value = foudUserData
                 } else {
-                    userModel("", "", "");
+                    userModel("", "", "", "");
                 }
                 Log.w("USERDATA", userData.value.email)
             }
@@ -80,6 +80,26 @@ class UserViewModel(
                 navController.navigate(navstring)
             }
         }
+    }
+
+    fun addOperator(
+        email: String,
+        password: String,
+        firsName: String,
+        lastName: String,
+    ): Boolean {
+        try {
+            viewModelScope.launch {
+                userRepository.register(
+                    RegistrationRequest(
+                        email, password, firsName, lastName
+                    )
+                )
+            }
+        }finally {
+            return true
+        }
+        return false
     }
 
     fun register(
@@ -120,7 +140,7 @@ class UserViewModel(
                 if (foudStockData != null) {
                     _stockDate.value = foudStockData
                 } else {
-                    userModel("", "", "");
+                    userModel("", "", "", "");
                 }
                 Log.w("STOCKData", userData.value.email)
             }
