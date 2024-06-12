@@ -1,6 +1,6 @@
 package com.example.warehouse_mobile
 
-//Създайте Composable функция за показване на списък с куриери
+
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -68,7 +68,7 @@ fun CourierItem(courier: Courier) {
     }
 }
 
-@Preview(showBackground = true)
+
 @Composable
 fun DefaultPreview() {
     CourierApp()
