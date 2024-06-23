@@ -29,7 +29,7 @@ fun SearchComposable(userModel: UserViewModel, navController: NavHostController)
 fun SearchShipment(userViewModel: UserViewModel) {
     Column {
         Text(text = "Shipments")
-        SearchShipmentForm()
+        SearchShipmentForm(userViewModel)
     }
 }
 

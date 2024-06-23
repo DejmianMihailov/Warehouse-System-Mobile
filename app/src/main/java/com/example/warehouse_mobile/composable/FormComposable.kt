@@ -2,8 +2,11 @@ package com.example.warehouse_mobile.composable
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Accessibility
 import androidx.compose.material.icons.rounded.Add
@@ -20,6 +23,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -28,17 +32,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.navigation.NavController
-import androidx.navigation.NavHostController
-import com.example.warehouse_mobile.model.userModel
+import com.example.warehouse_mobile.model.DeliverySearchRequest
 import com.example.warehouse_mobile.view.UserViewModel
 
 @Composable
-fun SearchShipmentForm() {
-    var address by remember { mutableStateOf("") }
+fun SearchShipmentForm(userModel: UserViewModel) {
+    var address by remember{ mutableStateOf("") }
     var client by remember { mutableStateOf("") }
     var stock by remember { mutableStateOf("") }
     var telephone by remember { mutableStateOf("") }
+    var flag by remember { mutableStateOf(false) }
 
     Column(
         modifier = Modifier
@@ -68,8 +71,46 @@ fun SearchShipmentForm() {
             label = { Text("Thephone") }
         )
 
-        Button(onClick = { /*TODO*/ }) {
+        Button(onClick = {
+            var add:String?=address
+            var cli:String? =client;
+            var sto:String? =stock;
+            var tel:String? =telephone;
+            if(address.equals("")){
+                add=null;
+            }
+            if(client.equals("")){
+                cli=null;
+            }
+            if(stock.equals("")){
+                sto=null;
+            }
+            if(telephone.equals("")){
+                tel=null;
+            }
+            flag = userModel.searchDelivery(
+                DeliverySearchRequest(
+                    client,
+                    address,
+                    stock,
+                    telephone
+                )
+            )
+        }) {
             Icon(Icons.Rounded.Search, contentDescription = "Search icon")
+        }
+        if (flag) {
+            var data = userModel.delivery.collectAsState();
+            LazyColumn {
+                items(data.value) { delivety ->
+                    Column {
+                        Text("Client name:" + delivety.client.name)
+                        Text("Stock:" + delivety.stock.name)
+                        Text("Client address:" + delivety.address.city + "," + delivety.address.street)
+                        Text("Client name:" + delivety.telephone)
+                    }
+                }
+            }
         }
     }
 }
@@ -111,23 +152,26 @@ fun CreateUserForm(UserViewModel: UserViewModel) {
             label = { Text("Password") },
             visualTransformation = PasswordVisualTransformation()
         )
-        Button(onClick = { flag=UserViewModel.addOperator(email,password, firstname, lastname) }) {
+        Button(onClick = {
+            flag = UserViewModel.addOperator(email, password, firstname, lastname)
+        }) {
             Icon(Icons.Rounded.Add, contentDescription = "Create operator")
         }
-        if (flag){
+        if (flag) {
             AlertDialogExample(
                 onDismissRequest = { openAlertDialog.value = false },
                 onConfirmation = {
-                    flag=false
+                    flag = false
                     openAlertDialog.value = false
-                    email=""
-                    firstname=""
-                    lastname=""
-                    password=""
+                    email = ""
+                    firstname = ""
+                    lastname = ""
+                    password = ""
                 },
                 dialogTitle = "Added new operator",
                 dialogText = "${firstname} ${lastname}",
-                icon = Icons.Default.Accessibility)
+                icon = Icons.Default.Accessibility
+            )
 
         }
     }
