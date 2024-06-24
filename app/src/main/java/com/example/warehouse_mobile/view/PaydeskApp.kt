@@ -19,11 +19,6 @@ import com.example.warehouse_mobile.model.Paydesk
 @Composable
 fun PaydeskApp(paydeskViewModel: UserViewModel) {
     val context = LocalContext.current
-
-    LaunchedEffect(Unit) {
-        paydeskViewModel.loadPaydesks(context)
-    }
-
     val paydesks =paydeskViewModel.paydesks.collectAsState()
     PaydeskList(paydesks.value)
 }
@@ -44,7 +39,6 @@ fun PaydeskList(paydesks: List<Paydesk>) {
 fun PaydeskItem(paydesk: Paydesk) {
     Column(modifier = Modifier.padding(vertical = 8.dp)) {
         Text(text = "ID: ${paydesk.id}")
-        Text(text = "Timestamp: ${paydesk.timestamp}")
         Text(text = "Update Counter: ${paydesk.updateCounter}")
     }
 }

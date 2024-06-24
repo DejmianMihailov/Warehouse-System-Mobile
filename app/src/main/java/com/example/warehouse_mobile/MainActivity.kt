@@ -22,6 +22,7 @@ import com.example.warehouse_mobile.composable.CrateNewUser
 import com.example.warehouse_mobile.composable.HomeCoposable
 import com.example.warehouse_mobile.composable.LandingCoposable
 import com.example.warehouse_mobile.composable.LogInCoposable
+import com.example.warehouse_mobile.composable.PaydeskComposable
 import com.example.warehouse_mobile.composable.ProfileCoposable
 import com.example.warehouse_mobile.composable.RegisterCoposable
 import com.example.warehouse_mobile.composable.SearchComposable
@@ -73,6 +74,9 @@ class MainActivity : ComponentActivity() {
                         }
                         composable("createOperator") {
                             CrateNewUser(userViewModel)
+                        }
+                        composable("pay") {
+                            PaydeskComposable(userViewModel)
                         }
                     }
                 }

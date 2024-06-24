@@ -11,15 +11,18 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.AccountBalanceWallet
 import androidx.compose.material.icons.rounded.AccountCircle
 import androidx.compose.material.icons.rounded.AddReaction
 import androidx.compose.material.icons.rounded.AllInbox
 import androidx.compose.material.icons.rounded.Search
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Surface
@@ -77,7 +80,12 @@ fun HomeCoposable(
                         Icon(Icons.Rounded.AddReaction, contentDescription = "Search icon")
                     }
                 }
-
+                if (isAdmin(userModel)) {
+                    Button(onClick = { navController.navigate("pay") }) {
+                        Text(text = "Paydesk")
+                        Icon(Icons.Rounded.AccountBalanceWallet, contentDescription = "Search icon")
+                    }
+                }
 
                 OutlinedButton(onClick = { navController.navigate("stock") }) {
                     Column {

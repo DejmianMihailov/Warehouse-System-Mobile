@@ -1,6 +1,5 @@
 package com.example.warehouse_mobile.data
 
-import com.example.warehouse_mobile.model.StockResponse
 import retrofit2.Retrofit
 import com.example.warehouse_mobile.retrofit.Api
 import com.example.warehouse_mobile.retrofit.repository.NetworkPaydeskRepository
@@ -18,7 +17,7 @@ interface AppContainer {
 }
 
 class DefaultAppContainer : AppContainer {
-    private val baseUrl = "http://192.168.56.1:8081/"
+    private val baseUrl = "http://192.168.0.103:8081/"
 
     private val retrofit: Retrofit = Retrofit.Builder()
         // .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))

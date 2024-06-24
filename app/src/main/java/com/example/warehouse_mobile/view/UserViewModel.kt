@@ -74,7 +74,7 @@ class UserViewModel(
         return true;
     }
 
-    fun loadPaydesks(context: Context) {
+    fun loadPaydesks() {
         viewModelScope.launch {
             if (userUiState is UserState.Success) {
                 val authToken = "Bearer " + (userUiState as UserState.Success).getTokken()
